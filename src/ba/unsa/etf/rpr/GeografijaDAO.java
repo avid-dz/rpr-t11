@@ -44,6 +44,21 @@ public class GeografijaDAO {
         if (!postoji) {
             brojDrzava = 0;
             brojGradova = 0;
+            try {
+                PreparedStatement psKreiranjeDrzava = connection.prepareStatement
+                        ("CREATE TABLE drzava { }");
+                PreparedStatement psKreiranjeGradova = connection.prepareStatement
+                        ("CREATE TABLE `grad` (\n" +
+                                "\t`id`\tINTEGER NOT NULL,\n" +
+                                "\t`naziv`\tTEXT,\n" +
+                                "\t`broj_stanovnika`\tINTEGER,\n" +
+                                "\t`drzava`\tINTEGER\n" +
+                                ");");
+                psKreiranjeDrzava.execute();
+                psKreiranjeGradova.execute();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             Grad pariz = new Grad(1, "Pariz", null, 2206488);
             Grad london = new Grad(2, "London", null, 8825000);
             Grad bech = new Grad(3, "Beč", null, 1899055);
@@ -90,7 +105,7 @@ public class GeografijaDAO {
             psNadjiDrzavu1 = connection.prepareStatement
                     ("SELECT id, glavni_grad FROM drzava WHERE naziv=?");
             psNadjiDrzavu2 = connection.prepareStatement
-                    ("SELECT id, glavni_grad FROM drzava WHERE naziv=?");
+                    ("SELECT naziv, broj_stanovnika FROM grad WHERE id=?");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -111,10 +126,12 @@ public class GeografijaDAO {
             ResultSet rezultat1 = psGlavniGrad1.executeQuery();
             int id = rezultat1.getInt(1);
             psGlavniGrad2.setInt(1, id);
+            rezultat1.close();
             ResultSet rezultat2 = psGlavniGrad2.executeQuery();
             String nazivGrada = rezultat2.getString(1);
             int brojStanovnikaGrada = rezultat2.getInt(2);
             Grad grad = new Grad(id, nazivGrada, nadjiDrzavu(drzava), brojStanovnikaGrada);
+            rezultat2.close();
             return grad;
         } catch (Exception e) {
             return null;
@@ -149,6 +166,7 @@ public class GeografijaDAO {
                 Grad trazeni = new Grad(idGrada, nazivGrada, trazena, brojStanovnika);
                 listaGradova.add(trazeni);
             }
+            rezultat1.close();
             return listaGradova;
         } catch (Exception e) {
             return new ArrayList<>();
@@ -157,6 +175,8 @@ public class GeografijaDAO {
 
     public void dodajGrad(Grad grad) {
         try {
+            brojGradova++;
+            grad.setId(brojGradova);
             psDodajGrad.setInt(1, grad.getId());
             psDodajGrad.setString(2, grad.getNaziv());
             psDodajGrad.setInt(3, grad.getBrojStanovnika());
@@ -169,6 +189,8 @@ public class GeografijaDAO {
 
     public void dodajDrzavu(Drzava drzava) {
         try {
+            brojDrzava++;
+            drzava.setId(brojDrzava);
             psDodajDrzavu.setInt(1, drzava.getId());
             psDodajDrzavu.setString(2, drzava.getNaziv());
             psDodajDrzavu.setInt(3, drzava.getGlavniGrad().getId());
@@ -191,7 +213,22 @@ public class GeografijaDAO {
     }
 
     public Drzava nadjiDrzavu(String drzava) {
-        
-        return new Drzava();
+        try {
+            psNadjiDrzavu1.setString(1, drzava);
+            ResultSet rezultat1 = psNadjiDrzavu1.executeQuery();
+            if (!rezultat1.next()) return null;
+            int idDrzave = rezultat1.getInt(1);
+            int idGrada = rezultat1.getInt(2);
+            psNadjiDrzavu2.setInt(1, idGrada);
+            ResultSet rezultat2 = psNadjiDrzavu2.executeQuery();
+            String nazivGrada = rezultat2.getString(1);
+            int brojStanovnika = rezultat2.getInt(2);
+            Grad grad = new Grad(idGrada, nazivGrada, null, brojStanovnika);
+            Drzava trazena = new Drzava(idDrzave, drzava, grad);
+            grad.setDrzava(trazena);
+            return trazena;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
