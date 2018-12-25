@@ -66,7 +66,7 @@ public class GeografijaDAO {
                         "(id INT PRIMARY KEY, " +
                         "naziv TEXT, " +
                         "broj_stanovnika INT," +
-                        "drzava INT);");
+                        "drzava INT REFERENCES drzava (id));");
                 psKreiranjeGradova.execute();
                 psUbacivanjePariza = connection.prepareStatement
                         ("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (1, 'Pariz', 2206488, 1)");
