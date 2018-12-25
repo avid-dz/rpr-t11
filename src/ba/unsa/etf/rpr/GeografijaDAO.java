@@ -19,6 +19,16 @@ public class GeografijaDAO {
     private PreparedStatement psIzmijeniGrad;
     private PreparedStatement psNadjiDrzavu1;
     private PreparedStatement psNadjiDrzavu2;
+    private PreparedStatement psKreiranjeDrzava;
+    private PreparedStatement psKreiranjeGradova;
+    private PreparedStatement psUbacivanjePariza;
+    private PreparedStatement psUbacivanjeLondona;
+    private PreparedStatement psUbacivanjeBeca;
+    private PreparedStatement psUbacivanjeManchestera;
+    private PreparedStatement psUbacivanjeGraza;
+    private PreparedStatement psUbacivanjeFrancuske;
+    private PreparedStatement psUbacivanjeVelikeBritanije;
+    private PreparedStatement psUbacivanjeAustrije;
     private static int brojGradova;
     private static int brojDrzava;
 
@@ -45,35 +55,33 @@ public class GeografijaDAO {
             brojDrzava = 0;
             brojGradova = 0;
             try {
-                Statement psKreiranjeDrzava = connection.createStatement();
-                psKreiranjeDrzava.execute
-                        ("CREATE TABLE drzava " +
+                psKreiranjeDrzava = connection.prepareStatement("CREATE TABLE drzava " +
                         "(id INT PRIMARY KEY, " +
                         "naziv TEXT, " +
                         "glavni_grad INT);");
-                Statement psKreiranjeGradova = connection.createStatement();
-                psKreiranjeGradova.execute
-                        ("CREATE TABLE grad " +
+                psKreiranjeDrzava.execute();
+                psKreiranjeGradova = connection.prepareStatement("CREATE TABLE grad " +
                         "(id INT PRIMARY KEY, " +
                         "naziv TEXT, " +
                         "broj_stanovnika INT," +
                         "drzava INT);");
-                Statement psUbacivanjePariza = connection.createStatement();
-                psUbacivanjePariza.execute("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (1, 'Pariz', 2206488, 1)");
-                Statement psUbacivanjeLondona = connection.createStatement();
-                psUbacivanjeLondona.execute("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (2, 'London', 8825000, 2)");
-                Statement psUbacivanjeBeca = connection.createStatement();
-                psUbacivanjeBeca.execute("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (3, 'Bec', 1899055, 3)");
-                Statement psUbacivanjeManchestera = connection.createStatement();
-                psUbacivanjeManchestera.execute("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (4, 'Manchester', 545500, 2)");
-                Statement psUbacivanjeGraza = connection.createStatement();
-                psUbacivanjeGraza.execute("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (5, 'Graz', 280200, 3)");
-                Statement psUbacivanjeFrancuske = connection.createStatement();
-                psUbacivanjeFrancuske.execute("INSERT INTO drzava (id, naziv, glavni_grad) VALUES (1, 'Francuska', 1)");
-                Statement psUbacivanjeVelikeBritanije = connection.createStatement();
-                psUbacivanjeVelikeBritanije.execute("INSERT INTO drzava (id, naziv, glavni_grad) VALUES (2, 'Velika Britanija', 2)");
-                Statement psUbacivanjeAustrije = connection.createStatement();
-                psUbacivanjeAustrije.execute("INSERT INTO drzava (id, naziv, glavni_grad) VALUES (3, 'Austrija', 3)");
+                psKreiranjeGradova.execute();
+                psUbacivanjePariza = connection.prepareStatement("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (1, 'Pariz', 2206488, 1)");
+                psUbacivanjePariza.execute();
+                psUbacivanjeLondona = connection.prepareStatement("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (2, 'London', 8825000, 2)");
+                psUbacivanjeLondona.execute();
+                psUbacivanjeBeca = connection.prepareStatement("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (3, 'Bec', 1899055, 3)");
+                psUbacivanjeBeca.execute();
+                psUbacivanjeManchestera = connection.prepareStatement("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (4, 'Manchester', 545500, 2)");
+                psUbacivanjeManchestera.execute();
+                psUbacivanjeGraza = connection.prepareStatement("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (5, 'Graz', 280200, 3)");
+                psUbacivanjeGraza.execute();
+                psUbacivanjeFrancuske = connection.prepareStatement("INSERT INTO drzava (id, naziv, glavni_grad) VALUES (1, 'Francuska', 1)");
+                psUbacivanjeFrancuske.execute();
+                psUbacivanjeVelikeBritanije = connection.prepareStatement("INSERT INTO drzava (id, naziv, glavni_grad) VALUES (2, 'Velika Britanija', 2)");
+                psUbacivanjeVelikeBritanije.execute();
+                psUbacivanjeAustrije = connection.prepareStatement("INSERT INTO drzava (id, naziv, glavni_grad) VALUES (3, 'Austrija', 3)");
+                psUbacivanjeAustrije.execute();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
