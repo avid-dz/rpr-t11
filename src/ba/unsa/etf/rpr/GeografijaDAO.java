@@ -129,13 +129,13 @@ public class GeografijaDAO {
         try {
             psGlavniGrad1.setString(1, drzava);
             ResultSet rezultat1 = psGlavniGrad1.executeQuery();
-            int id = rezultat1.getInt(1);
-            psGlavniGrad2.setInt(1, id);
+            int idGrada = rezultat1.getInt(1);
             rezultat1.close();
+            psGlavniGrad2.setInt(1, idGrada);
             ResultSet rezultat2 = psGlavniGrad2.executeQuery();
             String nazivGrada = rezultat2.getString(1);
             int brojStanovnikaGrada = rezultat2.getInt(2);
-            Grad grad = new Grad(id, nazivGrada, nadjiDrzavu(drzava), brojStanovnikaGrada);
+            Grad grad = new Grad(idGrada, nazivGrada, nadjiDrzavu(drzava), brojStanovnikaGrada);
             rezultat2.close();
             return grad;
         } catch (Exception e) {
@@ -146,6 +146,7 @@ public class GeografijaDAO {
     public void obrisiDrzavu(String drzava) {
         try {
             Drzava trazena = nadjiDrzavu(drzava);
+            if (trazena == null) return;
             int idDrzave = trazena.getId();
             psObrisiDrzavu1.setInt(1, idDrzave);
             psObrisiDrzavu2.setInt(1, idDrzave);
