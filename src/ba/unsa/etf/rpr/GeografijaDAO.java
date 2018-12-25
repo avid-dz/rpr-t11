@@ -29,6 +29,8 @@ public class GeografijaDAO {
     private PreparedStatement psUbacivanjeFrancuske;
     private PreparedStatement psUbacivanjeVelikeBritanije;
     private PreparedStatement psUbacivanjeAustrije;
+    private PreparedStatement psNadjiGrad1;
+    private PreparedStatement psNadjiGrad2;
     private static int maxNedozvoljeniIdGrada;
     private static int maxNedozvoljeniIdDrzave;
 
@@ -111,6 +113,10 @@ public class GeografijaDAO {
                     ("SELECT id, glavni_grad FROM drzava WHERE naziv=?");
             psNadjiDrzavu2 = connection.prepareStatement
                     ("SELECT naziv, broj_stanovnika FROM grad WHERE id=?");
+            psNadjiGrad1 = connection.prepareStatement
+                    ("SELECT id, broj_stanovnika, drzava FROM grad WHERE naziv=?");
+            psNadjiGrad2 = connection.prepareStatement
+                    ("SELECT naziv FROM drzava WHERE id=?");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -194,6 +200,9 @@ public class GeografijaDAO {
             psDodajGrad.setInt(1, grad.getId());
             psDodajGrad.setString(2, grad.getNaziv());
             psDodajGrad.setInt(3, grad.getBrojStanovnika());
+            if (nadjiDrzavu(grad.getDrzava().getNaziv()) == null) {
+                grad.getDrzava().setId(maxNedozvoljeniIdDrzave + 1);
+            }
             psDodajGrad.setInt(4, grad.getDrzava().getId());
             psDodajGrad.executeUpdate();
         } catch (Exception e) {
@@ -207,6 +216,9 @@ public class GeografijaDAO {
             drzava.setId(maxNedozvoljeniIdDrzave);
             psDodajDrzavu.setInt(1, drzava.getId());
             psDodajDrzavu.setString(2, drzava.getNaziv());
+            if (nadjiGrad(drzava.getGlavniGrad().getNaziv()) == null) {
+                drzava.getGlavniGrad().setId(maxNedozvoljeniIdGrada + 1);
+            }
             psDodajDrzavu.setInt(3, drzava.getGlavniGrad().getId());
             psDodajDrzavu.executeUpdate();
         } catch (Exception e) {
@@ -237,11 +249,31 @@ public class GeografijaDAO {
             psNadjiDrzavu2.setInt(1, idGrada);
             ResultSet rezultat2 = psNadjiDrzavu2.executeQuery();
             String nazivGrada = rezultat2.getString(1);
-            int brojStanovnika = rezultat2.getInt(2);
-            Grad grad = new Grad(idGrada, nazivGrada, null, brojStanovnika);
+            int brojStanovnikaGrada = rezultat2.getInt(2);
+            Grad grad = new Grad(idGrada, nazivGrada, null, brojStanovnikaGrada);
             Drzava trazena = new Drzava(idDrzave, drzava, grad);
             grad.setDrzava(trazena);
             return trazena;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private Grad nadjiGrad(String grad) {   // Pomocna metoda
+        try {
+            psNadjiGrad1.setString(1, grad);
+            ResultSet rezultat1 = psNadjiGrad1.executeQuery();
+            if (!rezultat1.next()) return null;
+            int idGrada = rezultat1.getInt(1);
+            int brojStanovnikaGrada = rezultat1.getInt(1);
+            int idDrzave = rezultat1.getInt(1);
+            psNadjiGrad2.setInt(1, idDrzave);
+            ResultSet rezultat2 = psNadjiGrad2.executeQuery();
+            String nazivDrzave = rezultat2.getString(1);
+            Drzava drzava = new Drzava(idDrzave, nazivDrzave, null);
+            Grad trazeni = new Grad(idGrada, grad, drzava, brojStanovnikaGrada);
+            drzava.setGlavniGrad(trazeni);
+            return trazeni;
         } catch (Exception e) {
             return null;
         }
