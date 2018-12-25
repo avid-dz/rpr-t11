@@ -45,41 +45,38 @@ public class GeografijaDAO {
             brojDrzava = 0;
             brojGradova = 0;
             try {
-                PreparedStatement psKreiranjeDrzava = connection.prepareStatement
-                        ("CREATE TABLE drzava { }");
-                PreparedStatement psKreiranjeGradova = connection.prepareStatement
-                        ("CREATE TABLE `grad` (\n" +
-                                "\t`id`\tINTEGER NOT NULL,\n" +
-                                "\t`naziv`\tTEXT,\n" +
-                                "\t`broj_stanovnika`\tINTEGER,\n" +
-                                "\t`drzava`\tINTEGER\n" +
-                                ");");
-                psKreiranjeDrzava.execute();
-                psKreiranjeGradova.execute();
+                Statement psKreiranjeDrzava = connection.createStatement();
+                psKreiranjeDrzava.execute
+                        ("CREATE TABLE drzava " +
+                        "(id INT PRIMARY KEY, " +
+                        "naziv TEXT, " +
+                        "glavni_grad INT);");
+                Statement psKreiranjeGradova = connection.createStatement();
+                psKreiranjeGradova.execute
+                        ("CREATE TABLE grad " +
+                        "(id INT PRIMARY KEY, " +
+                        "naziv TEXT, " +
+                        "broj_stanovnika INT," +
+                        "drzava INT);");
+                Statement psUbacivanjePariza = connection.createStatement();
+                psUbacivanjePariza.execute("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (1, 'Pariz', 2206488, 1)");
+                Statement psUbacivanjeLondona = connection.createStatement();
+                psUbacivanjeLondona.execute("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (2, 'London', 8825000, 2)");
+                Statement psUbacivanjeBeca = connection.createStatement();
+                psUbacivanjeBeca.execute("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (3, 'Bec', 1899055, 3)");
+                Statement psUbacivanjeManchestera = connection.createStatement();
+                psUbacivanjeManchestera.execute("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (4, 'Manchester', 545500, 2)");
+                Statement psUbacivanjeGraza = connection.createStatement();
+                psUbacivanjeGraza.execute("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (5, 'Graz', 280200, 3)");
+                Statement psUbacivanjeFrancuske = connection.createStatement();
+                psUbacivanjeFrancuske.execute("INSERT INTO drzava (id, naziv, glavni_grad) VALUES (1, 'Francuska', 1)");
+                Statement psUbacivanjeVelikeBritanije = connection.createStatement();
+                psUbacivanjeVelikeBritanije.execute("INSERT INTO drzava (id, naziv, glavni_grad) VALUES (2, 'Velika Britanija', 2)");
+                Statement psUbacivanjeAustrije = connection.createStatement();
+                psUbacivanjeAustrije.execute("INSERT INTO drzava (id, naziv, glavni_grad) VALUES (3, 'Austrija', 3)");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            Grad pariz = new Grad(1, "Pariz", null, 2206488);
-            Grad london = new Grad(2, "London", null, 8825000);
-            Grad bech = new Grad(3, "Beč", null, 1899055);
-            Grad manchester = new Grad(4, "Manchester", null, 545500);
-            Grad graz = new Grad(5, "Graz", null, 280200);
-            Drzava francuska = new Drzava(1, "Francuska", pariz);
-            Drzava velikaBritanija = new Drzava(2, "Velika Britanija", london);
-            Drzava austrija = new Drzava(3, "Austrija", bech);
-            pariz.setDrzava(francuska);
-            london.setDrzava(velikaBritanija);
-            bech.setDrzava(austrija);
-            manchester.setDrzava(velikaBritanija);
-            graz.setDrzava(austrija);
-            dodajGrad(pariz);
-            dodajGrad(london);
-            dodajGrad(bech);
-            dodajGrad(manchester);
-            dodajGrad(graz);
-            dodajDrzavu(francuska);
-            dodajDrzavu(velikaBritanija);
-            dodajDrzavu(austrija);
         }
         brojGradova = 5;
         brojDrzava = 3;
