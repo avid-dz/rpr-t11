@@ -29,8 +29,8 @@ public class GeografijaDAO {
     private PreparedStatement psUbacivanjeFrancuske;
     private PreparedStatement psUbacivanjeVelikeBritanije;
     private PreparedStatement psUbacivanjeAustrije;
-    private int brojGradova;
-    private int brojDrzava;
+    private static int brojGradova;
+    private static int brojDrzava;
 
     private static void initialize() {
         instance = new GeografijaDAO();
@@ -106,7 +106,7 @@ public class GeografijaDAO {
             psDodajDrzavu = connection.prepareStatement
                     ("INSERT INTO drzava(id, naziv, glavni_grad) VALUES(?, ?, ?)");
             psIzmijeniGrad = connection.prepareStatement
-                    ("UPDATE grad SET id=?, naziv=?, broj_stanovnika=?, drzava=?");
+                    ("UPDATE grad SET id=?, naziv=?, broj_stanovnika=?, drzava=? WHERE id=?");
             psNadjiDrzavu1 = connection.prepareStatement
                     ("SELECT id, glavni_grad FROM drzava WHERE naziv=?");
             psNadjiDrzavu2 = connection.prepareStatement
@@ -212,6 +212,7 @@ public class GeografijaDAO {
             psIzmijeniGrad.setString(2, grad.getNaziv());
             psIzmijeniGrad.setInt(3, grad.getBrojStanovnika());
             psIzmijeniGrad.setInt(4, grad.getDrzava().getId());
+            psIzmijeniGrad.setInt(5, grad.getId());
             psIzmijeniGrad.executeUpdate();
         } catch (Exception e) {
             return;
