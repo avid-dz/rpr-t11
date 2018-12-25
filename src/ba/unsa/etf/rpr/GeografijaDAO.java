@@ -29,8 +29,8 @@ public class GeografijaDAO {
     private PreparedStatement psUbacivanjeFrancuske;
     private PreparedStatement psUbacivanjeVelikeBritanije;
     private PreparedStatement psUbacivanjeAustrije;
-    private static int brojGradova;
-    private static int brojDrzava;
+    private static int maxNedozvoljeniIdGrada;
+    private static int maxNedozvoljeniIdDrzave;
 
     private static void initialize() {
         instance = new GeografijaDAO();
@@ -52,8 +52,8 @@ public class GeografijaDAO {
             e.printStackTrace();
         }
         if (!postoji) { // Ako ne postoji fajl, kreiraj tabele i ubaci u njih
-            brojDrzava = 0;
-            brojGradova = 0;
+            maxNedozvoljeniIdDrzave = 0;
+            maxNedozvoljeniIdGrada = 0;
             try {
                 psKreiranjeDrzava = connection.prepareStatement("CREATE TABLE drzava " +
                         "(id INT PRIMARY KEY, " +
@@ -86,8 +86,8 @@ public class GeografijaDAO {
                 e.printStackTrace();
             }
         }
-        brojGradova = 5;
-        brojDrzava = 3;
+        maxNedozvoljeniIdGrada = 5;
+        maxNedozvoljeniIdDrzave = 3;
         try {
             psGlavniGrad1 = connection.prepareStatement
                     ("SELECT glavni_grad FROM drzava WHERE naziv=?");
@@ -189,8 +189,8 @@ public class GeografijaDAO {
 
     public void dodajGrad(Grad grad) {
         try {
-            brojGradova++;
-            grad.setId(brojGradova);
+            maxNedozvoljeniIdGrada++;
+            grad.setId(maxNedozvoljeniIdGrada);
             psDodajGrad.setInt(1, grad.getId());
             psDodajGrad.setString(2, grad.getNaziv());
             psDodajGrad.setInt(3, grad.getBrojStanovnika());
@@ -203,8 +203,8 @@ public class GeografijaDAO {
 
     public void dodajDrzavu(Drzava drzava) {
         try {
-            brojDrzava++;
-            drzava.setId(brojDrzava);
+            maxNedozvoljeniIdDrzave++;
+            drzava.setId(maxNedozvoljeniIdDrzave);
             psDodajDrzavu.setInt(1, drzava.getId());
             psDodajDrzavu.setString(2, drzava.getNaziv());
             psDodajDrzavu.setInt(3, drzava.getGlavniGrad().getId());
