@@ -70,7 +70,7 @@ public class GeografijaDAO {
                 psUbacivanjePariza.executeUpdate();
                 psUbacivanjeLondona = connection.prepareStatement("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (2, 'London', 8825000, 2)");
                 psUbacivanjeLondona.executeUpdate();
-                psUbacivanjeBeca = connection.prepareStatement("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (3, 'Bec', 1899055, 3)");
+                psUbacivanjeBeca = connection.prepareStatement("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (3, 'Beč', 1899055, 3)");
                 psUbacivanjeBeca.executeUpdate();
                 psUbacivanjeManchestera = connection.prepareStatement("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (4, 'Manchester', 545500, 2)");
                 psUbacivanjeManchestera.executeUpdate();
