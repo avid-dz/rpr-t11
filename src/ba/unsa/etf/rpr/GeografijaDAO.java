@@ -67,21 +67,21 @@ public class GeografijaDAO {
                         "drzava INT);");
                 psKreiranjeGradova.execute();
                 psUbacivanjePariza = connection.prepareStatement("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (1, 'Pariz', 2206488, 1)");
-                psUbacivanjePariza.execute();
+                psUbacivanjePariza.executeUpdate();
                 psUbacivanjeLondona = connection.prepareStatement("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (2, 'London', 8825000, 2)");
-                psUbacivanjeLondona.execute();
+                psUbacivanjeLondona.executeUpdate();
                 psUbacivanjeBeca = connection.prepareStatement("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (3, 'Bec', 1899055, 3)");
-                psUbacivanjeBeca.execute();
+                psUbacivanjeBeca.executeUpdate();
                 psUbacivanjeManchestera = connection.prepareStatement("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (4, 'Manchester', 545500, 2)");
-                psUbacivanjeManchestera.execute();
+                psUbacivanjeManchestera.executeUpdate();
                 psUbacivanjeGraza = connection.prepareStatement("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (5, 'Graz', 280200, 3)");
-                psUbacivanjeGraza.execute();
+                psUbacivanjeGraza.executeUpdate();
                 psUbacivanjeFrancuske = connection.prepareStatement("INSERT INTO drzava (id, naziv, glavni_grad) VALUES (1, 'Francuska', 1)");
-                psUbacivanjeFrancuske.execute();
+                psUbacivanjeFrancuske.executeUpdate();
                 psUbacivanjeVelikeBritanije = connection.prepareStatement("INSERT INTO drzava (id, naziv, glavni_grad) VALUES (2, 'Velika Britanija', 2)");
-                psUbacivanjeVelikeBritanije.execute();
+                psUbacivanjeVelikeBritanije.executeUpdate();
                 psUbacivanjeAustrije = connection.prepareStatement("INSERT INTO drzava (id, naziv, glavni_grad) VALUES (3, 'Austrija', 3)");
-                psUbacivanjeAustrije.execute();
+                psUbacivanjeAustrije.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
