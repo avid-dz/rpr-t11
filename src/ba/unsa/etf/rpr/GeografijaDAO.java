@@ -29,8 +29,8 @@ public class GeografijaDAO {
     private PreparedStatement psUbacivanjeFrancuske;
     private PreparedStatement psUbacivanjeVelikeBritanije;
     private PreparedStatement psUbacivanjeAustrije;
-    private static int brojGradova;
-    private static int brojDrzava;
+    private int brojGradova;
+    private int brojDrzava;
 
     private static void initialize() {
         instance = new GeografijaDAO();
