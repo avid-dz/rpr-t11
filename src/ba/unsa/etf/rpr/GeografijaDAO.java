@@ -164,12 +164,12 @@ public class GeografijaDAO {
             while (rezultat1.next()) {
                 int idGrada = rezultat1.getInt(1);
                 String nazivGrada = rezultat1.getString(2);
-                int brojStanovnika = rezultat1.getInt(3);
+                int brojStanovnikaGrada = rezultat1.getInt(3);
                 int idDrzave = rezultat1.getInt(4);
                 psGradovi2.setInt(1, idDrzave);
                 ResultSet rezultat2 = psGradovi2.executeQuery();
                 Drzava trazena = nadjiDrzavu(rezultat2.getString(1));
-                Grad trazeni = new Grad(idGrada, nazivGrada, trazena, brojStanovnika);
+                Grad trazeni = new Grad(idGrada, nazivGrada, trazena, brojStanovnikaGrada);
                 listaGradova.add(trazeni);
             }
             rezultat1.close();
