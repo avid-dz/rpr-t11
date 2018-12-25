@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class GeografijaDAO {
 
     private static GeografijaDAO instance = null;
-    private Connection connection;
+    private static Connection connection;
     private PreparedStatement psGlavniGrad1;
     private PreparedStatement psGlavniGrad2;
     private PreparedStatement psObrisiDrzavu1;
@@ -123,6 +123,14 @@ public class GeografijaDAO {
 
     public static void removeInstance() {
         instance = null;
+        if (connection!=null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            connection=null;
+        }
     }
 
     public Grad glavniGrad(String drzava) {
