@@ -41,7 +41,7 @@ public class GeografijaDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (!postoji) {
+        if (!postoji) { // Ako ne postoji fajl, kreiraj tabele i ubaci u njih
             brojDrzava = 0;
             brojGradova = 0;
             try {
