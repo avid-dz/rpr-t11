@@ -116,7 +116,7 @@ public class IzborController {
         FXMLLoader loader = null;
         try {
             loader = new FXMLLoader(getClass().getResource("brisanjeDrzaveProzor.fxml"));
-            loader.setController(new BrisanjeGradaController());
+            loader.setController(new BrisanjeDrzaveController());
             Parent root = loader.load();
             noviStage = new Stage();
             noviStage.setResizable(false);
