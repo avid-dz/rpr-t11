@@ -12,6 +12,7 @@ public class GeografijaDAO {
     private PreparedStatement psGlavniGrad2;
     private PreparedStatement psObrisiDrzavu1;
     private PreparedStatement psObrisiDrzavu2;
+    private PreparedStatement psObrisiGrad;
     private PreparedStatement psGradovi1;
     private PreparedStatement psGradovi2;
     private PreparedStatement psDodajGrad;
@@ -108,6 +109,8 @@ public class GeografijaDAO {
                     ("DELETE FROM drzava WHERE id=?");
             psObrisiDrzavu2 = connection.prepareStatement
                     ("DELETE FROM grad WHERE drzava=?");
+            psObrisiGrad = connection.prepareStatement
+                    ("DELETE FROM grad WHERE id=?");
             psGradovi1 = connection.prepareStatement
                     ("SELECT * FROM grad ORDER BY broj_stanovnika DESC");
             psGradovi2 = connection.prepareStatement
@@ -177,6 +180,18 @@ public class GeografijaDAO {
             psObrisiDrzavu2.setInt(1, idDrzave);
             psObrisiDrzavu1.executeUpdate();
             psObrisiDrzavu2.executeUpdate();
+        } catch (Exception e) {
+
+        }
+    }
+
+    public void obrisiGrad(String grad) {
+        try {
+            Grad trazeni = nadjiGrad(grad);
+            if (trazeni == null) return;
+            int idGrada = trazeni.getId();
+            psObrisiGrad.setInt(1, idGrada);
+            psObrisiGrad.executeUpdate();
         } catch (Exception e) {
 
         }

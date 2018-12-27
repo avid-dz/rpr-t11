@@ -14,8 +14,9 @@ public class BrisanjeGradaController {
         if (nadjeni == null) {
             System.out.println("grad uopce ni ne postoji");
         }
-        /*else {
-            GeografijaDAO.getInstance().obrisiGra
-        }*/
+        else {
+            GeografijaDAO.getInstance().obrisiGrad(imeGrada.getText());
+            System.out.println("grad obrisan");
+        }
     }
 }
