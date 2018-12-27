@@ -1,6 +1,20 @@
 package ba.unsa.etf.rpr;
 
-public class GradoviReport {
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.swing.JFrame;
+
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.swing.JRViewer;
+
+public class GradoviReport extends JFrame{
 
     public void showReport(Connection conn) throws JRException {
         String reportSrcFile = getClass().getResource("/reports/gradovi3.jrxml").getFile();

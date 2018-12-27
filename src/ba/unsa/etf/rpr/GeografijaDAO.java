@@ -40,7 +40,7 @@ public class GeografijaDAO {
         instance = new GeografijaDAO();
     }
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         return connection;
     }
 

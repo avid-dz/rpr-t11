@@ -81,52 +81,19 @@
 		<![CDATA[]]>
 	</queryString>
 	<title>
-		<band height="70" splitType="Stretch">
-			<image>
-				<reportElement x="275" y="0" width="300" height="64" uuid="77afb8aa-5936-455c-a616-237b3e167f2a"/>
-				<imageExpression><![CDATA["leaf_banner_green.png"]]></imageExpression>
-			</image>
+		<band height="340" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="d1456985-5f71-4f5e-8789-b90ba2242d46"/>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Leaf Green Title]]></text>
+				<reportElement style="Title" x="140" y="0" width="263" height="33" uuid="d1456985-5f71-4f5e-8789-b90ba2242d46"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Gradovi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="SubTitle" x="100" y="46" width="174" height="22" uuid="0615de43-2c06-4494-97e2-2267724bf538"/>
-				<text><![CDATA[Leaf Green SubTitle]]></text>
+				<reportElement style="SubTitle" x="90" y="50" width="390" height="22" uuid="0615de43-2c06-4494-97e2-2267724bf538"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Poredani po broju stanovnika opadajuce]]></text>
 			</staticText>
-		</band>
-	</title>
-	<pageFooter>
-		<band height="20" splitType="Stretch">
-			<textField>
-				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="e1e6e881-386b-4b5b-85e3-88dcd2f5bf79"/>
-				<textElement textAlignment="Right">
-					<font size="10" isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
-			</textField>
-			<textField evaluationTime="Report">
-				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="a054645a-ee76-4d43-8655-5b2b83d680db"/>
-				<textElement>
-					<font size="10" isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
-			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="b9a3964b-495c-43b2-ad18-c9170d33272e"/>
-				<textElement>
-					<font size="10" isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
-		</band>
-	</pageFooter>
-	<summary>
-		<band height="200" splitType="Stretch">
-			<property name="local_mesure_unitheight" value="pixel"/>
 			<componentElement>
-				<reportElement x="0" y="0" width="555" height="250" uuid="d3a82ccc-3e4a-4ba2-aacd-c37e9c16fa58">
+				<reportElement x="0" y="90" width="555" height="250" uuid="d3a82ccc-3e4a-4ba2-aacd-c37e9c16fa58">
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
@@ -303,6 +270,36 @@
 					</jr:columnGroup>
 				</jr:table>
 			</componentElement>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="e1e6e881-386b-4b5b-85e3-88dcd2f5bf79"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="a054645a-ee76-4d43-8655-5b2b83d680db"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="b9a3964b-495c-43b2-ad18-c9170d33272e"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="200" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
 		</band>
 	</summary>
 </jasperReport>

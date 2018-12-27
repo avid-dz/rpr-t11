@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.JRException;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
@@ -125,6 +126,14 @@ public class IzborController {
             noviStage.show();
         } catch (Exception exception) {
             exception.printStackTrace();
+        }
+    }
+
+    public void stampajGradovePoredanePoBrojuStanovnika(ActionEvent actionEvent) {
+        try {
+            new GradoviReport().showReport(GeografijaDAO.getInstance().getConnection());
+        } catch (JRException e) {
+            e.printStackTrace();
         }
     }
 }
