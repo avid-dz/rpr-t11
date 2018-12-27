@@ -40,6 +40,10 @@ public class GeografijaDAO {
         instance = new GeografijaDAO();
     }
 
+    public Connection getConnection() {
+        return connection;
+    }
+
     private GeografijaDAO() {
         boolean postoji = true;
         File file = new File("baza.db");
