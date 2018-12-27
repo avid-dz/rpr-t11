@@ -3,11 +3,33 @@ package ba.unsa.etf.rpr;
 import java.io.File;
 import java.util.Scanner;
 
-public class Main {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
+
+public class Main extends Application {
+
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        GeografijaDAO.removeInstance();
+        File dbfile = new File("baza.db");
+        dbfile.delete();
+        GeografijaDAO geo=GeografijaDAO.getInstance();
+        Parent root = FXMLLoader.load(getClass().getResource("izbor.fxml"));
+        primaryStage.setResizable(false);
+        primaryStage.setTitle("GUI");
+        primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        primaryStage.show();
+    }
 
     public static void main(String[] args) {
-        System.out.println(ispisiGradove());
-        glavniGrad();
+        /*System.out.println(ispisiGradove());
+        glavniGrad();*/
+        launch(args);
     }
 
     private static void glavniGrad() {

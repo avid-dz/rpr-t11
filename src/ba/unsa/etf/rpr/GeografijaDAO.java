@@ -17,6 +17,7 @@ public class GeografijaDAO {
     private PreparedStatement psDodajGrad;
     private PreparedStatement psDodajDrzavu;
     private PreparedStatement psIzmijeniGrad;
+    private PreparedStatement psIzmijeniDrzavu;
     private PreparedStatement psNadjiDrzavu1;
     private PreparedStatement psNadjiDrzavu2;
     private PreparedStatement psKreiranjeDrzava;
@@ -117,6 +118,8 @@ public class GeografijaDAO {
                     ("INSERT INTO drzava(id, naziv, glavni_grad) VALUES(?, ?, ?)");
             psIzmijeniGrad = connection.prepareStatement
                     ("UPDATE grad SET id=?, naziv=?, broj_stanovnika=?, drzava=? WHERE id=?");
+            psIzmijeniDrzavu = connection.prepareStatement
+                    ("UPDATE drzava SET id=?, naziv=?, glavni_grad=? WHERE id=?");
             psNadjiDrzavu1 = connection.prepareStatement
                     ("SELECT id, glavni_grad FROM drzava WHERE naziv=?");
             psNadjiDrzavu2 = connection.prepareStatement
@@ -247,6 +250,18 @@ public class GeografijaDAO {
         }
     }
 
+    public void izmijeniDrzavu(Drzava drzava) {
+        try {
+            psIzmijeniDrzavu.setInt(1, drzava.getId());
+            psIzmijeniDrzavu.setString(2, drzava.getNaziv());
+            psIzmijeniDrzavu.setInt(3, drzava.getGlavniGrad().getId());
+            psIzmijeniDrzavu.setInt(4, drzava.getId());
+            psIzmijeniDrzavu.executeUpdate();
+        } catch (Exception e) {
+            return;
+        }
+    }
+
     public Drzava nadjiDrzavu(String drzava) {
         try {
             psNadjiDrzavu1.setString(1, drzava);
@@ -267,14 +282,14 @@ public class GeografijaDAO {
         }
     }
 
-    private Grad nadjiGrad(String grad) {   // Pomocna metoda
+    public Grad nadjiGrad(String grad) {   // Pomocna metoda
         try {
             psNadjiGrad1.setString(1, grad);
             ResultSet rezultat1 = psNadjiGrad1.executeQuery();
             if (!rezultat1.next()) return null;
             int idGrada = rezultat1.getInt(1);
-            int brojStanovnikaGrada = rezultat1.getInt(1);
-            int idDrzave = rezultat1.getInt(1);
+            int brojStanovnikaGrada = rezultat1.getInt(2);
+            int idDrzave = rezultat1.getInt(3);
             psNadjiGrad2.setInt(1, idDrzave);
             ResultSet rezultat2 = psNadjiGrad2.executeQuery();
             String nazivDrzave = rezultat2.getString(1);

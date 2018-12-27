@@ -47,4 +47,8 @@ public class Grad {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String ispisiGrad() {
+        return getNaziv() + " (" + getBrojStanovnika() + " stanovnika) u državi " + getDrzava().getNaziv();
+    }
 }

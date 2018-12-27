@@ -37,4 +37,8 @@ public class Drzava {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String ispisiDrzavu() {
+        return getNaziv() + " sa glavnim gradom " + getGlavniGrad().getNaziv();
+    }
 }
