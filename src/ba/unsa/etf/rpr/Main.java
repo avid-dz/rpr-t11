@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr;
 
 import java.io.File;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import javafx.application.Application;
@@ -19,7 +20,8 @@ public class Main extends Application {
         File dbfile = new File("baza.db");
         dbfile.delete();
         GeografijaDAO geo=GeografijaDAO.getInstance();
-        Parent root = FXMLLoader.load(getClass().getResource("izbor.fxml"));
+        ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+        Parent root = FXMLLoader.load(getClass().getResource("izbor.fxml"), bundle);
         primaryStage.setResizable(false);
         primaryStage.setTitle("GUI");
         primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));

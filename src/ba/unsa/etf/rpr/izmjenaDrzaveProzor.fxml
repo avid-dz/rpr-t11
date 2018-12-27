@@ -20,12 +20,12 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label prefHeight="17.0" prefWidth="103.0" text="Stari naziv države:" />
-      <Label text="Novi naziv države:" GridPane.rowIndex="1" />
-      <Label text="Naziv glavnog grada:" GridPane.rowIndex="2" />
+      <Label prefHeight="17.0" prefWidth="103.0" text="%stariNazivDrzave" />
+      <Label text="%noviNazivDrzave" GridPane.rowIndex="1" />
+      <Label text="%noviNazivGlavnogGrada" GridPane.rowIndex="2" />
       <TextField fx:id="stariNazivDr" GridPane.columnIndex="1" />
       <TextField fx:id="noviNazivDr" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <TextField fx:id="noviNazivGr" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Button mnemonicParsing="false" onAction="#mijenjanjeDr" text="Izmijeni" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Button mnemonicParsing="false" onAction="#mijenjanjeDr" text="%izmijeniDrzavuDugme" GridPane.columnIndex="1" GridPane.rowIndex="4" />
    </children>
 </GridPane>

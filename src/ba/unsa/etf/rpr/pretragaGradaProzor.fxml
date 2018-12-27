@@ -17,8 +17,8 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label text="Unesite ime grada:" />
+      <Label text="%unosImenaGrada" />
       <TextField fx:id="tfNazivGr" GridPane.columnIndex="1" />
-      <Button fx:id="dugmeTraziGr" onAction="#pretragaGr" mnemonicParsing="false" text="Traži grad" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Button fx:id="dugmeTraziGr" mnemonicParsing="false" onAction="#pretragaGr" text="%traziGradDugme" GridPane.columnIndex="1" GridPane.rowIndex="1" />
    </children>
 </GridPane>

@@ -17,8 +17,8 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label text="Unesite ime države:" />
+        <Label text="%unosImenaDrzave" />
         <TextField fx:id="tfNazivDr" prefHeight="20.0" prefWidth="127.0" GridPane.columnIndex="1" />
-        <Button fx:id="dugmeTraziDr" onAction="#pretragaDr" mnemonicParsing="false" text="Traži državu" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button fx:id="dugmeTraziDr" mnemonicParsing="false" onAction="#pretragaDr" text="%traziDrzavuDugme" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     </children>
 </GridPane>

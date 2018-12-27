@@ -20,14 +20,14 @@
       <RowConstraints />
     </rowConstraints>
     <children>
-        <Label prefHeight="17.0" prefWidth="103.0" text="Stari naziv grada:" />
-        <Label text="Novi naziv grada:" GridPane.rowIndex="1" />
-        <Label text="Naziv države:" GridPane.rowIndex="2" />
+        <Label prefHeight="17.0" prefWidth="103.0" text="%stariNazivGrada" />
+        <Label text="%noviNazivGrada" GridPane.rowIndex="1" />
+        <Label text="%nazivDrzave" GridPane.rowIndex="2" />
         <TextField fx:id="stariNazivGr" GridPane.columnIndex="1" />
         <TextField fx:id="noviNazivGr" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <TextField fx:id="drzava" GridPane.columnIndex="1" GridPane.rowIndex="2" />
         <TextField fx:id="noviBrStan" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        <Button mnemonicParsing="false" onAction="#mijenjanjeGr" text="Izmijeni" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <Label text="Novi broj stanovnika:" GridPane.rowIndex="3" />
+        <Button mnemonicParsing="false" onAction="#mijenjanjeGr" text="%izmijeniGradDugme" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Label text="%noviBrojStanovnika" GridPane.rowIndex="3" />
     </children>
 </GridPane>
