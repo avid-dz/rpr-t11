@@ -17,8 +17,8 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label text="%nazivGradaBrisanje" />
+        <Label text="%imeGradaBrisanje" />
         <TextField fx:id="imeGrada" prefHeight="20.0" prefWidth="127.0" GridPane.columnIndex="1" />
-        <Button fx:id="brisanjeBtn" mnemonicParsing="false" onAction="#brisiGr" text="%obrisiGradDugme" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button fx:id="brisanjeBtn" mnemonicParsing="false" onAction="#brisiGr" text="%brisiGradDugme" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     </children>
 </GridPane>
