@@ -7,16 +7,26 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import net.sf.jasperreports.engine.JRException;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class IzborController {
+
+    private ResourceBundle bundle;
+
+    public IzborController() {
+        Locale.setDefault(new Locale("bs", "BA"));
+        bundle = ResourceBundle.getBundle("Translation");
+    }
 
     public void pretrazujGradEvent(ActionEvent actionEvent) {
         try {
             Stage noviStage = null;
             FXMLLoader loader = null;
             try {
-                loader = new FXMLLoader(getClass().getResource("pretragaGradaProzor.fxml"));
+                loader = new FXMLLoader(getClass().getResource("pretragaGradaProzor.fxml"), bundle);
                 loader.setController(new PretragaGradaController());
                 Parent root = loader.load();
                 noviStage = new Stage();
@@ -37,7 +47,7 @@ public class IzborController {
             Stage noviStage = null;
             FXMLLoader loader = null;
             try {
-                loader = new FXMLLoader(getClass().getResource("pretragaDrzaveProzor.fxml"));
+                loader = new FXMLLoader(getClass().getResource("pretragaDrzaveProzor.fxml"), bundle);
                 loader.setController(new PretragaDrzaveController());
                 Parent root = loader.load();
                 noviStage = new Stage();
@@ -58,7 +68,7 @@ public class IzborController {
             Stage noviStage = null;
             FXMLLoader loader = null;
             try {
-                loader = new FXMLLoader(getClass().getResource("izmjenaGradaProzor.fxml"));
+                loader = new FXMLLoader(getClass().getResource("izmjenaGradaProzor.fxml"), bundle);
                 loader.setController(new IzmjenaGradaController());
                 Parent root = loader.load();
                 noviStage = new Stage();
@@ -79,7 +89,7 @@ public class IzborController {
             Stage noviStage = null;
             FXMLLoader loader = null;
             try {
-                loader = new FXMLLoader(getClass().getResource("izmjenaDrzaveProzor.fxml"));
+                loader = new FXMLLoader(getClass().getResource("izmjenaDrzaveProzor.fxml"), bundle);
                 loader.setController(new IzmjenaDrzaveController());
                 Parent root = loader.load();
                 noviStage = new Stage();
@@ -99,7 +109,7 @@ public class IzborController {
         Stage noviStage = null;
         FXMLLoader loader = null;
         try {
-            loader = new FXMLLoader(getClass().getResource("brisanjeGradaProzor.fxml"));
+            loader = new FXMLLoader(getClass().getResource("brisanjeGradaProzor.fxml"), bundle);
             loader.setController(new BrisanjeGradaController());
             Parent root = loader.load();
             noviStage = new Stage();
@@ -116,7 +126,7 @@ public class IzborController {
         Stage noviStage = null;
         FXMLLoader loader = null;
         try {
-            loader = new FXMLLoader(getClass().getResource("brisanjeDrzaveProzor.fxml"));
+            loader = new FXMLLoader(getClass().getResource("brisanjeDrzaveProzor.fxml"), bundle);
             loader.setController(new BrisanjeDrzaveController());
             Parent root = loader.load();
             noviStage = new Stage();

@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr;
 
 import java.io.File;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -20,11 +21,12 @@ public class Main extends Application {
         File dbfile = new File("baza.db");
         dbfile.delete();
         GeografijaDAO geo=GeografijaDAO.getInstance();
+        Locale.setDefault(new Locale("bs", "BA"));
         ResourceBundle bundle = ResourceBundle.getBundle("Translation");
         Parent root = FXMLLoader.load(getClass().getResource("izbor.fxml"), bundle);
         primaryStage.setResizable(false);
         primaryStage.setTitle("GUI");
-        primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        primaryStage.setScene(new Scene(root, 300, 200));
         primaryStage.show();
     }
 
