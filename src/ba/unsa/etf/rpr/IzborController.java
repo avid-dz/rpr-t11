@@ -37,7 +37,7 @@ public class IzborController {
                 Parent root = loader.load();
                 noviStage = new Stage();
                 noviStage.setResizable(false);
-                noviStage.setTitle("Pretraga grada");
+                noviStage.setTitle(bundle.getString("pretragaGradaTitle"));
                 noviStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
                 noviStage.show();
             } catch (Exception exception) {
@@ -58,7 +58,7 @@ public class IzborController {
                 Parent root = loader.load();
                 noviStage = new Stage();
                 noviStage.setResizable(false);
-                noviStage.setTitle("Pretraga države");
+                noviStage.setTitle(bundle.getString("pretragaDrzaveTitle"));
                 noviStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
                 noviStage.show();
             } catch (Exception exception) {
@@ -79,7 +79,7 @@ public class IzborController {
                 Parent root = loader.load();
                 noviStage = new Stage();
                 noviStage.setResizable(false);
-                noviStage.setTitle("Izmjena grada");
+                noviStage.setTitle(bundle.getString("izmjenaGradaTitle"));
                 noviStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
                 noviStage.show();
             } catch (Exception exception) {
@@ -100,7 +100,7 @@ public class IzborController {
                 Parent root = loader.load();
                 noviStage = new Stage();
                 noviStage.setResizable(false);
-                noviStage.setTitle("Izmjena države");
+                noviStage.setTitle(bundle.getString("izmjenaDrzaveTitle"));
                 noviStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
                 noviStage.show();
             } catch (Exception exception) {
@@ -120,7 +120,7 @@ public class IzborController {
             Parent root = loader.load();
             noviStage = new Stage();
             noviStage.setResizable(false);
-            noviStage.setTitle("Brisanje grada");
+            noviStage.setTitle(bundle.getString("brisanjeGradatitle"));
             noviStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             noviStage.show();
         } catch (Exception exception) {
@@ -137,7 +137,7 @@ public class IzborController {
             Parent root = loader.load();
             noviStage = new Stage();
             noviStage.setResizable(false);
-            noviStage.setTitle("Brisanje države");
+            noviStage.setTitle(bundle.getString("brisanjeDrzaveTitle"));
             noviStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             noviStage.show();
         } catch (Exception exception) {
