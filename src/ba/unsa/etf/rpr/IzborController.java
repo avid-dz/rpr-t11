@@ -5,9 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import net.sf.jasperreports.engine.JRException;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -154,7 +156,19 @@ public class IzborController {
     }
 
     public void saveEvent(ActionEvent actionEvent) {
-
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save As");
+        fileChooser.getExtensionFilters().addAll
+                (new FileChooser.ExtensionFilter("PDF File", "*.pdf"),
+                        new FileChooser.ExtensionFilter("Word Document", "*.docx"),
+                        new FileChooser.ExtensionFilter("Excel Document", "*.xlsx"));
+        File izabraniFajl = fileChooser.showSaveDialog(new Stage());
+        if (izabraniFajl == null) return;
+        try {
+            new GradoviReport().saveAs(GeografijaDAO.getInstance().getConnection(), izabraniFajl.getAbsolutePath());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void frEvent(ActionEvent actionEvent) {
