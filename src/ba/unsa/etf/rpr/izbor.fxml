@@ -17,12 +17,12 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <RadioButton mnemonicParsing="false" onAction="#pretrazujGradEvent" text="%pretragaGradaRadio" GridPane.rowIndex="1" />
-            <RadioButton mnemonicParsing="false" onAction="#pretrazujDrzavuEvent" text="%pretragaDrzaveRadio" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <RadioButton mnemonicParsing="false" onAction="#mijenjajGradEvent" text="%izmjenaGradaRadio" GridPane.rowIndex="2" />
-            <RadioButton mnemonicParsing="false" onAction="#mijenjajDrzavuEvent" text="%izmjenaDrzaveRadio" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <RadioButton mnemonicParsing="false" onAction="#brisiGradEvent" text="%brisanjeGradaRadio" GridPane.rowIndex="3" />
-            <RadioButton mnemonicParsing="false" onAction="#brisiDrzavuEvent" text="%brisanjeDrzaveRadio" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <RadioButton fx:id="radio1" mnemonicParsing="false" onAction="#pretrazujGradEvent" text="%pretragaGradaRadio" GridPane.rowIndex="1" />
+            <RadioButton fx:id="radio2" mnemonicParsing="false" onAction="#pretrazujDrzavuEvent" text="%pretragaDrzaveRadio" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <RadioButton fx:id="radio3" mnemonicParsing="false" onAction="#mijenjajGradEvent" text="%izmjenaGradaRadio" GridPane.rowIndex="2" />
+            <RadioButton fx:id="radio4" mnemonicParsing="false" onAction="#mijenjajDrzavuEvent" text="%izmjenaDrzaveRadio" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <RadioButton fx:id="radio5" mnemonicParsing="false" onAction="#brisiGradEvent" text="%brisanjeGradaRadio" GridPane.rowIndex="3" />
+            <RadioButton fx:id="radio6" mnemonicParsing="false" onAction="#brisiDrzavuEvent" text="%brisanjeDrzaveRadio" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Button mnemonicParsing="false" onAction="#stampajGradovePoredanePoBrojuStanovnika" text="%stampajGradoveDugme" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnSpan="2">
                <children>
@@ -30,17 +30,17 @@
                     <menus>
                       <Menu mnemonicParsing="false" text="File">
                         <items>
-                          <MenuItem mnemonicParsing="false" text="Save As..." />
+                          <MenuItem onAction="#saveEvent" mnemonicParsing="false" text="Save As..." />
                         </items>
                       </Menu>
                       <Menu mnemonicParsing="false" text="%viewMenu">
                            <items>
                               <Menu mnemonicParsing="false" text="%languageMenu">
                                 <items>
-                                    <MenuItem mnemonicParsing="false" text="Francais" />
-                                  <MenuItem mnemonicParsing="false" text="Bosanski" />
-                                    <MenuItem mnemonicParsing="false" text="English" />
-                                    <MenuItem mnemonicParsing="false" text="Deutsch" />
+                                    <MenuItem onAction="#frEvent" mnemonicParsing="false" text="Francais" />
+                                  <MenuItem onAction="#bsEvent" mnemonicParsing="false" text="Bosanski" />
+                                    <MenuItem onAction="#enEvent" mnemonicParsing="false" text="English" />
+                                    <MenuItem onAction="#deEvent" mnemonicParsing="false" text="Deutsch" />
                                 </items>
                               </Menu>
                            </items>
