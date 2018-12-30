@@ -1,17 +1,15 @@
 package ba.unsa.etf.rpr;
 
-import java.io.File;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.Scanner;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
+import java.io.File;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class Main extends Application {
 
