@@ -155,6 +155,23 @@ public class IzborController {
         }
     }
 
+    public void printPoDrzaviEvent(ActionEvent actionEvent) {
+        Stage noviStage = null;
+        FXMLLoader loader = null;
+        try {
+            loader = new FXMLLoader(getClass().getResource("stampanjePoDrzavi.fxml"), bundle);
+            loader.setController(new StampanjePoDrzaviController());
+            Parent root = loader.load();
+            noviStage = new Stage();
+            noviStage.setResizable(false);
+            noviStage.setTitle(bundle.getString("printajPoDrzaviDugme"));
+            noviStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            noviStage.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
     public void saveEvent(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save As");

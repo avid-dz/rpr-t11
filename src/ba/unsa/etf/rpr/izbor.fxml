@@ -30,17 +30,17 @@
                     <menus>
                       <Menu mnemonicParsing="false" text="File">
                         <items>
-                          <MenuItem onAction="#saveEvent" mnemonicParsing="false" text="Save As..." />
+                          <MenuItem mnemonicParsing="false" onAction="#saveEvent" text="Save As..." />
                         </items>
                       </Menu>
                       <Menu mnemonicParsing="false" text="%viewMenu">
                            <items>
                               <Menu mnemonicParsing="false" text="%languageMenu">
                                 <items>
-                                    <MenuItem onAction="#frEvent" mnemonicParsing="false" text="Francais" />
-                                  <MenuItem onAction="#bsEvent" mnemonicParsing="false" text="Bosanski" />
-                                    <MenuItem onAction="#enEvent" mnemonicParsing="false" text="English" />
-                                    <MenuItem onAction="#deEvent" mnemonicParsing="false" text="Deutsch" />
+                                    <MenuItem mnemonicParsing="false" onAction="#frEvent" text="Francais" />
+                                  <MenuItem mnemonicParsing="false" onAction="#bsEvent" text="Bosanski" />
+                                    <MenuItem mnemonicParsing="false" onAction="#enEvent" text="English" />
+                                    <MenuItem mnemonicParsing="false" onAction="#deEvent" text="Deutsch" />
                                 </items>
                               </Menu>
                            </items>
@@ -49,6 +49,7 @@
                   </MenuBar>
                </children>
             </VBox>
+            <Button onAction="#printPoDrzaviEvent" mnemonicParsing="false" text="%printajPoDrzaviDugme" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </center>
