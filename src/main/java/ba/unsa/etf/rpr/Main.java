@@ -21,7 +21,7 @@ public class Main extends Application {
         GeografijaDAO geo=GeografijaDAO.getInstance();
         Locale.setDefault(new Locale("bs", "BA"));
         ResourceBundle bundle = ResourceBundle.getBundle("Translation");
-        Parent root = FXMLLoader.load(getClass().getResource("/izbor.fxml"), bundle);
+        Parent root = FXMLLoader.load(getClass().getResource("/izbor.fxml"), bundle); // Trebalo je promijeniti putanje
         primaryStage.setResizable(false);
         primaryStage.setTitle("GUI");
         primaryStage.setScene(new Scene(root, 300, 200));
