@@ -10,9 +10,7 @@ import net.sf.jasperreports.export.SimpleXlsxReportConfiguration;
 import net.sf.jasperreports.swing.JRViewer;
 
 import javax.swing.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +19,12 @@ public class GradoviReport extends JFrame{
 
     public void saveAs(Connection conn, String format) throws JRException, FileNotFoundException {
         File file = new File(format);
-        String reportSrcFile = getClass().getResource("/reports/gradovi.jrxml").getFile();
+        InputStream reportSrcFile = null;
+        try {
+            reportSrcFile = getClass().getResource("/reports/gradovi.jrxml").openStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         String reportsDir = getClass().getResource("/reports/").getFile();
 
         JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
@@ -55,7 +58,12 @@ public class GradoviReport extends JFrame{
     }
 
     public void showReport(Connection conn) throws JRException {
-        String reportSrcFile = getClass().getResource("/reports/gradovi.jrxml").getFile();
+        InputStream reportSrcFile = null;
+        try {
+            reportSrcFile = getClass().getResource("/reports/gradovi.jrxml").openStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         String reportsDir = getClass().getResource("/reports/").getFile();
 
         JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
@@ -74,7 +82,12 @@ public class GradoviReport extends JFrame{
     }
 
     public void showReport1(Connection conn, String nazivDrzave) throws JRException {
-        String reportSrcFile = getClass().getResource("/reports/gradovi1.jrxml").getFile();
+        InputStream reportSrcFile = null;
+        try {
+            reportSrcFile = getClass().getResource("/reports/gradovi1.jrxml").openStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         String reportsDir = getClass().getResource("/reports/").getFile();
 
         JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
