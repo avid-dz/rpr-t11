@@ -34,7 +34,7 @@ public class IzborController {
             Stage noviStage = null;
             FXMLLoader loader = null;
             try {
-                loader = new FXMLLoader(getClass().getResource("../../../../../resources/pretragaGradaProzor.fxml"), bundle);
+                loader = new FXMLLoader(getClass().getResource("/pretragaGradaProzor.fxml"), bundle);
                 loader.setController(new PretragaGradaController());
                 Parent root = loader.load();
                 noviStage = new Stage();
@@ -55,7 +55,7 @@ public class IzborController {
             Stage noviStage = null;
             FXMLLoader loader = null;
             try {
-                loader = new FXMLLoader(getClass().getResource("../../../../../resources/pretragaDrzaveProzor.fxml"), bundle);
+                loader = new FXMLLoader(getClass().getResource("/pretragaDrzaveProzor.fxml"), bundle);
                 loader.setController(new PretragaDrzaveController());
                 Parent root = loader.load();
                 noviStage = new Stage();
@@ -76,7 +76,7 @@ public class IzborController {
             Stage noviStage = null;
             FXMLLoader loader = null;
             try {
-                loader = new FXMLLoader(getClass().getResource("../../../../../resources/izmjenaGradaProzor.fxml"), bundle);
+                loader = new FXMLLoader(getClass().getResource("/izmjenaGradaProzor.fxml"), bundle);
                 loader.setController(new IzmjenaGradaController());
                 Parent root = loader.load();
                 noviStage = new Stage();
@@ -97,7 +97,7 @@ public class IzborController {
             Stage noviStage = null;
             FXMLLoader loader = null;
             try {
-                loader = new FXMLLoader(getClass().getResource("../../../../../resources/izmjenaDrzaveProzor.fxml"), bundle);
+                loader = new FXMLLoader(getClass().getResource("/izmjenaDrzaveProzor.fxml"), bundle);
                 loader.setController(new IzmjenaDrzaveController());
                 Parent root = loader.load();
                 noviStage = new Stage();
@@ -117,7 +117,7 @@ public class IzborController {
         Stage noviStage = null;
         FXMLLoader loader = null;
         try {
-            loader = new FXMLLoader(getClass().getResource("../../../../../resources/brisanjeGradaProzor.fxml"), bundle);
+            loader = new FXMLLoader(getClass().getResource("/brisanjeGradaProzor.fxml"), bundle);
             loader.setController(new BrisanjeGradaController());
             Parent root = loader.load();
             noviStage = new Stage();
@@ -134,7 +134,7 @@ public class IzborController {
         Stage noviStage = null;
         FXMLLoader loader = null;
         try {
-            loader = new FXMLLoader(getClass().getResource("../../../../../resources/brisanjeDrzaveProzor.fxml"), bundle);
+            loader = new FXMLLoader(getClass().getResource("/brisanjeDrzaveProzor.fxml"), bundle);
             loader.setController(new BrisanjeDrzaveController());
             Parent root = loader.load();
             noviStage = new Stage();
@@ -159,7 +159,7 @@ public class IzborController {
         Stage noviStage = null;
         FXMLLoader loader = null;
         try {
-            loader = new FXMLLoader(getClass().getResource("../../../../../resources/stampanjePoDrzavi.fxml"), bundle);
+            loader = new FXMLLoader(getClass().getResource("/stampanjePoDrzavi.fxml"), bundle);
             loader.setController(new StampanjePoDrzaviController());
             Parent root = loader.load();
             noviStage = new Stage();
@@ -194,7 +194,7 @@ public class IzborController {
         bundle = ResourceBundle.getBundle("Translation");
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("../../../../../resources/izbor.fxml"), bundle);
+            root = FXMLLoader.load(getClass().getResource("/izbor.fxml"), bundle);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -208,7 +208,7 @@ public class IzborController {
         bundle = ResourceBundle.getBundle("Translation");
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("../../../../../resources/izbor.fxml"), bundle);
+            root = FXMLLoader.load(getClass().getResource("/izbor.fxml"), bundle);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -222,7 +222,7 @@ public class IzborController {
         bundle = ResourceBundle.getBundle("Translation");
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("../../../../../resources/izbor.fxml"), bundle);
+            root = FXMLLoader.load(getClass().getResource("/izbor.fxml"), bundle);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -236,7 +236,7 @@ public class IzborController {
         bundle = ResourceBundle.getBundle("Translation");
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("../../../../../resources/izbor.fxml"), bundle);
+            root = FXMLLoader.load(getClass().getResource("/izbor.fxml"), bundle);
         } catch (IOException e) {
             e.printStackTrace();
         }

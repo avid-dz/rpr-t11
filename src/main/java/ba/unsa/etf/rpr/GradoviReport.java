@@ -21,8 +21,8 @@ public class GradoviReport extends JFrame{
 
     public void saveAs(Connection conn, String format) throws JRException, FileNotFoundException {
         File file = new File(format);
-        String reportSrcFile = getClass().getResource("/main/resources/reports/gradovi.jrxml").getFile();
-        String reportsDir = getClass().getResource("/main/resources/reports/").getFile();
+        String reportSrcFile = getClass().getResource("/reports/gradovi.jrxml").getFile();
+        String reportsDir = getClass().getResource("/reports/").getFile();
 
         JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
         // Fields for resources path
@@ -55,8 +55,8 @@ public class GradoviReport extends JFrame{
     }
 
     public void showReport(Connection conn) throws JRException {
-        String reportSrcFile = getClass().getResource("/main/resources/reports/gradovi.jrxml").getFile();
-        String reportsDir = getClass().getResource("/main/resources/reports/").getFile();
+        String reportSrcFile = getClass().getResource("/reports/gradovi.jrxml").getFile();
+        String reportsDir = getClass().getResource("/reports/").getFile();
 
         JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
         // Fields for resources path
@@ -74,8 +74,8 @@ public class GradoviReport extends JFrame{
     }
 
     public void showReport1(Connection conn, String nazivDrzave) throws JRException {
-        String reportSrcFile = getClass().getResource("/main/resources/reports/gradovi1.jrxml").getFile();
-        String reportsDir = getClass().getResource("/main/resources/reports/").getFile();
+        String reportSrcFile = getClass().getResource("/reports/gradovi1.jrxml").getFile();
+        String reportsDir = getClass().getResource("/reports/").getFile();
 
         JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
         // Fields for resources path
